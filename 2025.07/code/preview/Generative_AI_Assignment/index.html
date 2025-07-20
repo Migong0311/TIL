@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>SSAFY 기억력 게임</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>🎯 SSAFY 기억력 게임</h1>
+  <div class="timer-box">
+  <span>⏱ 경과시간: </span><span id="timer">00:00</span>
+  <button id="restartBtn">🔁 재시작</button>
+</div>
+
+  <div class="game-board" id="gameBoard"></div>
+
+  <!-- 팝업 모달 -->
+  <div id="modal" class="modal hidden">
+    <div class="modal-content">
+      <h2>🎉 게임 완료!</h2>
+      <p id="result-time"></p>
+      <button onclick="closeModal()">닫기</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
