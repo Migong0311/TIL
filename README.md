@@ -1,6 +1,6 @@
 # 📚 TIL (Today I Learned)
 
-> 매일 조금씩 배우고 성장하는 기록
+> [![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&duration=7000&pause=800&color=15F71B&width=435&lines=A+daily+journey+of+learning+and+growth)](https://git.io/typing-svg)
 
 이 레포지토리는 제가 매일 학습한 내용을 기록하는 공간입니다. 작고 사소하더라도 그날 배운 것을 정리함으로써 지식을 체계화하고, 꾸준한 성장을 추구합니다.
 
