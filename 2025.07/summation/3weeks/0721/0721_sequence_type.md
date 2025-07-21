@@ -141,3 +141,5 @@ exam[1]='a'
 ![image.png](/2025.07/summation/3weeks/0721/0721_images/image-17.png)
 
 - 위와 같이 **재정의**를 해줘야함
+
+##### © 2025 Migong0311 and SSAFY. All rights reserved.
