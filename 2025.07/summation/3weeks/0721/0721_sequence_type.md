@@ -124,7 +124,7 @@ print(my_str[::-1]) # olleh
    > hlo
 5. `print(my_str[::-1])` 위랑 동일한 케이스이나 음수인덱스는 0번자리에 가까워질수록 음수값도 작아지기때문에 즉 반대로 출력 하는 의미
    > ![image.png](/2025.07/summation/3weeks/0721/0721_images/image-16.png)
-
+   > olleh
 ### 문자열의 불변성
 
 - 문자열은 한번 선언하면 불변성 즉 immutable 성질을 지님
