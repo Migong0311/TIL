@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>ChatSAFY</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="chat-wrapper">
+    <header>
+      <img src="image.png" alt="SSAFY 로고" />
+      <h1>ChatSAFY</h1>
+    </header>
+
+    <!-- 추천 명령어 버튼 영역 -->
+    <section id="suggestion-box">
+      <p class="suggestion-title">추천 질문</p>
+      <div class="suggestion-buttons">
+        <!-- JS에서 생성 -->
+      </div>
+    </section>
+
+    <main id="chat-container"></main>
+
+    <footer>
+      <input type="text" id="user-input" placeholder="질문을 입력하세요..." />
+      <button id="send-btn">전송</button>
+    </footer>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
