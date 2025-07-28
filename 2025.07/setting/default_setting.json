@@ -1,0 +1,38 @@
+{
+  "terminal.integrated.defaultProfile.windows": "Git Bash",
+
+  "workbench.iconTheme": "vscode-icons",
+
+  "git.enableSmartCommit": true,
+  "git.autofetch": true,
+  "git.openRepositoryInParentFolders": "always",
+
+  "workbench.editor.empty.hint": "hidden",
+
+  "editor.formatOnSave": true,
+
+  "editor.wordWrap": "on",
+
+  "editor.insertSpaces": true,
+  "editor.tabSize": 4,
+
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "workbench.colorCustomizations": {},
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.autopep8"
+  },
+  "explorer.confirmDragAndDrop": false,
+  "git.confirmSync": false,
+  "python.useEnvironmentsExtension": false,
+  "workbench.editorAssociations": {
+    "*.pptx": "default"
+  }
+}
