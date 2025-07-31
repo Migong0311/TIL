@@ -29,7 +29,42 @@
 - [마크다운 문법 정리](https://guides.github.com/features/mastering-markdown/)
 
 ---
+### 유용한 마크다운 문법
 
+> [!NOTE]
+> Useful information that users should know, even when skimming content.
+
+> [!TIP]
+> Helpful advice for doing things better or more easily.
+
+> [!IMPORTANT]
+> Key information users need to know to achieve their goal.
+
+> [!WARNING]
+> Urgent info that needs immediate user attention to avoid problems.
+
+> [!CAUTION]
+> Advises about risks or negative outcomes of certain actions.
+
+- <ins>**밑줄예시**</ins>
+```markdown
+> [!NOTE]
+> Useful information that users should know, even when skimming content.
+
+> [!TIP]
+> Helpful advice for doing things better or more easily.
+
+> [!IMPORTANT]
+> Key information users need to know to achieve their goal.
+
+> [!WARNING]
+> Urgent info that needs immediate user attention to avoid problems.
+
+> [!CAUTION]
+> Advises about risks or negative outcomes of certain actions.
+
+- <ins>**밑줄예시**</ins>
+```
 #### 함께 공부하는 분들, 피드백은 언제든 환영합니다 🙌
 
 ##### © 2025 Migong0311 and SSAFY. All rights reserved.
