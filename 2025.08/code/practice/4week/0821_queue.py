@@ -2,7 +2,8 @@
 # 7 8
 # 1 2 1 3 2 4 2 5 4 6 5 6 6 7 3 7
 # ===================================
-
+import sys
+sys.stdin = open('input.txt','r')
 V, E = map(int, input().split())  # V: 정점 개수(정점 번호는 1..V), E: 간선 개수
 arr = list(map(int, input().split()))  # 간선 정보를 일렬로 입력받음(총 2*E개 숫자, (u,v) 쌍들이 이어짐)
 
@@ -53,4 +54,4 @@ for i in range(E):
 
 # BFS 실행: 문제에서 시작 정점이 1이므로 s=1
 # 두 번째 인자는 정점 수로, 일반화하려면 bfs(1, V) 형태가 더 안전합니다.
-bfs(1, 7)
+bfs(1, V)
