@@ -6,7 +6,7 @@
 - 12개의 column 속 6개의 **breakpoints**가 있음
 
 
-![alt text](image.png)
+![alt text](img/image.png)
 
 ## Grid system Breakpoints 이란?
 
@@ -43,19 +43,19 @@
 
 - xs
 
-![alt text](image-1.png)
+![alt text](img/image-1.png)
 
 - sm
 
-![alt text](image-2.png)
+![alt text](img/image-2.png)
 
 - md
 
-![alt text](image-3.png)
+![alt text](img/image-3.png)
 
 - lg
 
-![alt text](image-4.png)
+![alt text](img/image-4.png)
 
 ---
 
