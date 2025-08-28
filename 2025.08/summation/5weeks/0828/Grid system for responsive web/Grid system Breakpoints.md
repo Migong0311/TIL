@@ -116,4 +116,4 @@
 <div class="container py-3 bg-light border">.container 박스입니다</div>
 <div class="container-fluid py-3 bg-secondary text-white mt-2">.container-fluid 박스입니다</div>
 ```
-#### 실제 동작은 [여기](/2025.08\code\practice\5weeks\0828\test02.html)에서 live-server 통해 확인하셈
+#### 실제 동작은 [여기]([/2025.08\code\practice\5weeks\0828\test02.html](https://github.com/Migong0311/TIL/blob/august/2025.08/code/practice/5weeks/0828/test02.html))에서 live-server 통해 확인하셈
