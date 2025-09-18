@@ -1,7 +1,44 @@
-.idea
-.vscode
+# Python 관련
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+
+# Django 관련
+*.log
+*.pot
+*.pyc
+db.sqlite3
+db.sqlite3-journal
+media/
+staticfiles/
+
+# 환경 설정
+.env
+*.env
+*.venv
+venv/
+ENV/
+env/
+*.bak
+*.swp
+
+# IDE/에디터
+.vscode/
+.idea/
+*.iml
+
+# OS 관련
+.DS_Store
+Thumbs.db
+
+
 *.txt
 web
 django
-venv
 django_practice&training
