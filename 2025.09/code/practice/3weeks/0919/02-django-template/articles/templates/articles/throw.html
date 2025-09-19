@@ -1,0 +1,18 @@
+{% extends 'articles/base.html' %}
+
+{% block content %}
+<div class="container py-4">
+  <h1 class="mb-4 text-primary">💬 Throw</h1>
+
+  <div class="card shadow-sm">
+    <div class="card-body">
+      <form action="/articles/catch/" method="GET" class="d-flex">
+        <!-- 입력창 -->
+        <input type="text" id="message" name="message" class="form-control me-2" placeholder="메시지를 입력하세요..." required>
+        <!-- 전송 버튼 -->
+        <button type="submit" class="btn btn-primary">전송</button>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'articles/base.html' %}
+
+{% block content %}
+<div class="container py-4">
+  <h1 class="mb-4 text-success">📩 Catch</h1>
+
+  <div class="card shadow-sm">
+    <div class="card-body">
+      <!-- 상대방이 보낸 메시지처럼 표시 -->
+      <div class="d-flex justify-content-start mb-3">
+        <div class="p-3 rounded-3 bg-light text-dark">
+          {{ message }} 라고 하네요.
+        </div>
+      </div>
+      <!-- 내가 보낸 메시지처럼 표시 -->
+      <div class="d-flex justify-content-end">
+        <div class="p-3 rounded-3 bg-primary text-white">
+          나 : {{ message }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
