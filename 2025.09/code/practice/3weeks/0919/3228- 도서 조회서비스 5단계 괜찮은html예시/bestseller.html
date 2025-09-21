@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>베스트 셀러 목록</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+      .page-title {
+        letter-spacing: 0.3px;
+      }
+      .item-block {
+        background: #fff;
+        border-radius: 0.75rem;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+      }
+      .item-block hr {
+        opacity: 0.2;
+      }
+      .label {
+        font-weight: 700;
+        color: #495057;
+      }
+      /* 순위별 강조색 */
+      .rank-1 {
+        border-left: 6px solid #dc3545;
+        background: #ffe5e5;
+      } /* 빨강 */
+      .rank-2 {
+        border-left: 6px solid #fd7e14;
+        background: #fff3e0;
+      } /* 주황 */
+      .rank-3 {
+        border-left: 6px solid #ffc107;
+        background: #fff9e0;
+      } /* 노랑 */
+      .rank-else {
+        border-left: 6px solid #198754;
+        background: #f8fdf9;
+      } /* 초록 */
+    </style>
+  </head>
+  <body class="bg-light">
+    <!-- 상단 네비게이션 바 -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom">
+      <div class="container">
+        <a class="navbar-brand fw-bold" href="{% url 'index' %}">📚 도서 관리 시스템</a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#topNav" aria-controls="topNav" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+
+        <div class="collapse navbar-collapse" id="topNav">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link btn {% if request.path == index_url %}
+                  
+                  
+                  
+                  btn-success text-white active
+
+
+
+                {% else %}
+                  
+                  
+                  
+                  btn-outline-success
+
+
+
+                {% endif %} mx-1"
+                href="{% url 'index' %}">
+                Home
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link btn {% if request.path == recommend_url %}
+                  
+                  
+                  
+                  btn-success text-white active
+
+
+
+                {% else %}
+                  
+                  
+                  
+                  btn-outline-success
+
+
+
+                {% endif %} mx-1"
+                href="{% url 'recommend' %}">
+                Recommend
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link btn {% if request.path == bestseller_url %}
+                  
+                  
+                  
+                  btn-success text-white active
+
+
+
+                {% else %}
+                  
+                  
+                  
+                  btn-outline-success
+
+
+
+                {% endif %} mx-1"
+                href="{% url 'bestseller' %}">
+                BestSeller
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Body -->
+    <main class="container py-5">
+      <h1 class="page-title fw-bold mb-4">베스트 셀러 목록</h1>
+
+      {% for item in result %}
+        <div class="item-block p-4 mb-3 
+                  {% if forloop.counter == 1 %}
+            
+            
+            
+            rank-1
+
+
+
+
+          {% elif forloop.counter == 2 %}
+            
+            
+            
+            rank-2
+
+
+
+
+          {% elif forloop.counter == 3 %}
+            
+            
+            
+            rank-3
+
+
+
+
+          {% else %}
+            
+            
+            
+            rank-else
+
+
+
+          {% endif %}">
+          <p class="mb-1 fw-bold">
+            <span class="label">제목 :</span> {{ item.title }}
+          </p>
+          <p class="mb-1">
+            <span class="label">저자 :</span> <span class="text-muted">{{ item.author }}</span>
+          </p>
+
+          <p class="mb-2">
+            <span class="label">설명 :</span> {{ item.bestDuration }}
+          </p>
+        </div>
+      {% empty %}
+        <p class="text-muted">표시할 항목이 없습니다.</p>
+      {% endfor %}
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
