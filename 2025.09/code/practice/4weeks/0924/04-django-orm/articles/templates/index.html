@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Articles</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f7f9fc;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      color: #2c3e50;
+      margin-bottom: 30px;
+    }
+    .article-card {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      padding: 20px;
+      margin: 20px auto;
+      max-width: 600px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .article-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+    }
+    .article-card li {
+      list-style: none;
+      padding: 6px 0;
+      border-bottom: 1px solid #ecf0f1;
+    }
+    .article-card li:last-child {
+      border-bottom: none;
+    }
+    .article-card strong {
+      color: #34495e;
+    }
+  </style>
+</head>
+<body>
+  <h1>📝 Articles</h1>
+
+  {% for article in articles %}
+  <div class="article-card">
+    <ul>
+      <li><strong>글 번호:</strong> {{ article.pk }}</li>
+      <li><strong>글 제목:</strong> {{ article.title }}</li>
+      <li><strong>글 내용:</strong> {{ article.content }}</li>
+    </ul>
+  </div>
+  {% empty %}
+  <p style="text-align:center; color: #7f8c8d;">작성된 글이 없습니다.</p>
+  {% endfor %}
+</body>
+</html>
