@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>New</h1>
+
+ {% comment %}
+      글 생성 요청을 처리하는 URL은 articles:create 입니다.
+      여기서는 보안을 위해 반드시 POST 방식으로 전송해야 하며,
+      Django에서는 POST 요청을 사용할 때 CSRF(Cross Site Request Forgery) 방지를 위해
+      {% csrf_token %} 태그를 form 안에 포함시켜야 합니다.
+      이 토큰은 서버에서 발급한 임시 키로, 유효하지 않으면 요청이 거부됩니다.
+    {% endcomment %}
+    <form action="{% url 'articles:create' %}" method="POST">
+      {% csrf_token %}
+      <div>
+        <label for="title">Title:</label>
+        <input type="text" name="title" id="title" />
+      </div>
+
+      <div>
+        <label for="content">Content:</label>
+        <textarea name="content" id="content"></textarea>
+      </div>
+
+      <input type="submit" />
+    </form>
+
+    <hr />
+
+    {% comment %} 메인 목록 페이지로 이동 {% endcomment %}
+    <a href="{% url 'articles:index' %}">back</a>
+  </body>
+</html>

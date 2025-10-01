@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
+<body>
+  <h3>Hello, {{ user.username }}</h3>
+
+  <h1>메인 페이지</h1>
+
+  {% if request.user.is_authenticated %}
+    <!-- 로그아웃: 확인창 -->
+    <form action="{% url 'accounts:logout' %}" method="POST" onsubmit="return confirmLogout()">
+      {% csrf_token %}
+      <input type="submit" value="Logout">
+    </form>
+
+    <!-- 회원탈퇴: 10초 사칙연산 퀴즈 -->
+    <form action="{% url 'accounts:delete' %}" method="POST" onsubmit="return confirmDelete()">
+      {% csrf_token %}
+      <input type="submit" value="회원탈퇴">
+    </form>
+
+    <a href="{% url 'articles:create' %}">CREATE</a>
+    <a href="{% url 'accounts:update' %}">회원정보수정</a>
+  {% else %}
+    <a href="{% url 'accounts:login' %}">Login</a>
+    <a href="{% url 'accounts:signup' %}">회원가입</a>
+  {% endif %}
+
+  <hr>
+  {% for article in articles %}
+    <div>
+      <p>글 번호: {{ article.pk }}</p>
+      <p>글 제목: <a href="{% url 'articles:detail' article.pk %}">{{ article.title }}</a></p>
+      <p>글 내용: {{ article.content }}</p>
+    </div>
+    <hr>
+  {% endfor %}
+
+  <script>
+    function confirmLogout() {
+      return confirm("정말 로그아웃 하시겠습니까?");
+    }
+
+    function confirmDelete() {
+      const num1 = Math.floor(Math.random() * 10) + 1;
+      const num2 = Math.floor(Math.random() * 10) + 1;
+      const operators = ["+", "-", "*"];
+      const operator = operators[Math.floor(Math.random() * operators.length)];
+
+      let correctAnswer;
+      switch (operator) {
+        case "+": correctAnswer = num1 + num2; break;
+        case "-": correctAnswer = num1 - num2; break;
+        case "*": correctAnswer = num1 * num2; break;
+      }
+
+      alert("회원탈퇴를 진행하려면 10초 안에 문제를 풀어야 합니다!");
+
+      const startTime = Date.now();
+      const userAnswer = prompt(`문제: ${num1} ${operator} ${num2} = ? (10초 안에 답을 입력하세요)`);
+
+      if (userAnswer === null) {
+        alert("회원탈퇴가 취소되었습니다.");
+        return false;
+      }
+
+      const elapsedTime = ((Date.now() - startTime) / 1000).toFixed(2); // 소수점 2자리까지 표시
+
+      if (parseInt(userAnswer, 10) === correctAnswer && elapsedTime <= 10) {
+        alert(`정답입니다. (${elapsedTime}초 소요) 회원탈퇴가 진행됩니다.`);
+        return true;
+      } else {
+        if (elapsedTime > 10) {
+          alert(`시간 초과! (${elapsedTime}초 소요) 회원탈퇴가 취소되었습니다.`);
+        } else {
+          alert(`오답입니다! (${elapsedTime}초 소요) 회원탈퇴가 취소되었습니다.`);
+        }
+        return false;
+      }
+    }
+  </script>
+</body>
+</html>

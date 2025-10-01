@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      // 로그아웃 확인
+      function confirmLogout() {
+        return confirm("정말 로그아웃 하시겠습니까?");
+      }
+
+      // 회원탈퇴 확인 (사칙연산 + 30초 제한)
+      function confirmDelete() {
+        // 랜덤 숫자와 연산자 생성
+        const num1 = Math.floor(Math.random() * 10) + 1;
+        const num2 = Math.floor(Math.random() * 10) + 1;
+        const operators = ["+", "-", "*"];
+        const operator = operators[Math.floor(Math.random() * operators.length)];
+
+        // 정답 계산
+        let correctAnswer;
+        switch (operator) {
+          case "+": correctAnswer = num1 + num2; break;
+          case "-": correctAnswer = num1 - num2; break;
+          case "*": correctAnswer = num1 * num2; break;
+        }
+
+        alert("회원탈퇴를 진행하려면 30초 안에 문제를 풀어야 합니다!");
+
+        // 30초 제한 설정
+        const startTime = Date.now();
+        const userAnswer = prompt(`문제: ${num1} ${operator} ${num2} = ? (30초 안에 답을 입력하세요)`);
+
+        // 사용자가 prompt 취소했을 경우
+        if (userAnswer === null) {
+          alert("회원탈퇴가 취소되었습니다.");
+          return false;
+        }
+
+        // 경과 시간 계산
+        const elapsedTime = (Date.now() - startTime) / 1000;
+
+        // 조건 검사 (정답 + 시간 내 입력)
+        if (parseInt(userAnswer, 10) === correctAnswer && elapsedTime <= 30) {
+          alert("정답입니다. 회원탈퇴가 진행됩니다.");
+          return true; // form 제출 허용
+        } else {
+          if (elapsedTime > 30) {
+            alert("시간 초과! 회원탈퇴가 취소되었습니다.");
+          } else {
+            alert("오답입니다! 회원탈퇴가 취소되었습니다.");
+          }
+          return false; // form 제출 차단
+        }
+      }
+    </script>
+  </head>
+  <body>
+    {% if request.user.is_authenticated %}
+      <h3>Hello, {{ user.username }}</h3>
+      <h1>메인 페이지</h1>
+
+      <!-- 로그아웃 -->
+      <form action="{% url 'accounts:logout' %}" method="POST" onsubmit="return confirmLogout()">
+        {% csrf_token %}
+        <input type="submit" value="Logout" />
+      </form>
+      <br />
+
+      <!-- 회원탈퇴 (사칙연산 퀴즈 확인) -->
+      <form action="{% url 'accounts:delete' %}" method="POST" onsubmit="return confirmDelete()">
+        {% csrf_token %}
+        <input type="submit" value="회원탈퇴" />
+      </form>
+      <br />
+
+      <a href="{% url 'articles:create' %}">CREATE</a>
+      <hr />
+
+      {% for article in articles %}
+        <div>
+          <p>글 번호: {{ article.pk }}</p>
+          <p>
+            글 제목: <a href="{% url 'articles:detail' article.pk %}">{{ article.title }}</a>
+          </p>
+          <p>글 내용: {{ article.content }}</p>
+        </div>
+        <hr />
+      {% endfor %}
+    {% else %}
+      <h1>메인 페이지</h1>
+      <h3><strong>로그인 후</strong> 이용해주세요.</h3>
+      <a href="{% url 'accounts:login' %}">Login</a>
+      <a href="{% url 'accounts:signup' %}">signup</a>
+    {% endif %}
+  </body>
+</html>
