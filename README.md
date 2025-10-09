@@ -2,6 +2,7 @@
 ## 아래는 금일 과목평가 대비 모음집이므로 금일안에 삭제되는 임시 파일입니다.
 
 # Django 1시간 합격 압축 노트
+> [찐막확인용 로직](https://github.com/Migong0311/TIL/tree/september/07-03-django-authentication-system)
 
 ## 0) 60분 학습 플랜
 
