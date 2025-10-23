@@ -149,7 +149,7 @@ Attention은 **입력 전체에서 중요한 부분에 “가중치”를 부여
 
 ### 🔹 어텐션의 작동 원리
 
-![alt text](/assets/img/attention.png)
+![alt text](/practice/assets/img/attention.png)
 
 
 | 구성요소     | 의미                    |

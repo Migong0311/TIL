@@ -29,7 +29,7 @@ categorical_cols = df.select_dtypes('object').columns
 
 📘 **공식**
 
-![alt text](/assets/img/Standardization.png)
+![alt text](/practice/assets/img/Standardization.png)
 
 > 🔹 회귀나 거리 기반 모델(`KNN`, `SVM`, `PCA`)에서 매우 중요
 
@@ -75,7 +75,7 @@ X_array = df[['col1', 'col2']].to_numpy()
 * **미분 없이 한 번에 해를 구하는 방법**
 * MSE(평균제곱오차)를 최소화하는 해:
 
-![alt text](/assets/img/Normal_Equation.png)
+![alt text](/practice/assets/img/Normal_Equation.png)
 
 > 🔹 행렬 역연산을 직접 수행하므로 데이터 크기가 클수록 연산량 급증
 
@@ -147,7 +147,7 @@ mse = np.mean((y_pred - y) ** 2)
 * SVD(특이값 분해)는 역행렬이 존재하지 않아도 **유사역행렬(pseudo-inverse)** 계산 가능
 * 수학적으로 안정적이며 수치 오차에 강함
 
-![alt text](/assets/img/SVD.png)
+![alt text](/practice/assets/img/SVD.png)
 
 
 
@@ -173,7 +173,7 @@ theta_svd = Vt.T @ S_plus @ U.T @ y
 * 해를 직접 구하지 않고, **손실 감소 방향으로 θ를 반복 갱신**
 * 반복(iteration)으로 최적 해 근사
 
-![alt text](/assets/img/Gradient_Descent.png)
+![alt text](/practice/assets/img/Gradient_Descent.png)
 
 
 
@@ -245,7 +245,7 @@ for epoch in range(epochs):
 
 ## 📊 5️⃣ MSE 평가 및 시각화
 
-![alt text](/assets/img/MSE.png)
+![alt text](/practice/assets/img/MSE.png)
 
 #### 💻 시각화 함수
 
