@@ -1,47 +1,247 @@
 -- 01. Querying data
--- employees 테이블에서 LastName(성), FirstName(이름) 컬럼만 조회
-SELECT LastName, FirstName FROM employees;
-
--- employees 테이블의 모든 컬럼(*)을 조회
-SELECT * FROM employees;
-
--- employees 테이블에서 FirstName 컬럼을 '이름'이라는 별칭으로 조회
-SELECT FirstName AS '이름' FROM employees;
-
--- tracks 테이블에서 곡명(Name)과 재생시간(Milliseconds)을 분 단위로 변환하여 조회
--- Milliseconds / 60000 → 밀리초를 분으로 환산
-SELECT Name, Milliseconds / 60000 AS '재생 시간(분)' FROM tracks;
-
-
--- 02. Sorting data (데이터 정렬)
-
--- employees 테이블에서 FirstName(이름) 컬럼만 조회하고, 이름을 오름차순으로 정렬
-SELECT FirstName FROM employees ORDER BY FirstName;
--- employees 테이블에서 FirstName(이름) 컬럼만 조회하고, 이름을 내림차순으로 정렬
-SELECT FirstName FROM employees ORDER BY FirstName DESC;
-
--- 테이블 customers에서 country 필드를 기준으로 내림차순으로 정렬한 다음
--- city 필드 기준으로 오름차순 조회
 SELECT 
-    Country,City
+  LastName
 FROM
-    customers
-ORDER BY
-    "Country" DESC, City;
-
--- 테이블 tracks에서 Milliseconds 필드를 기준으로 내림차순으로 정렬한 다음
--- Name,Milliseconds 필드의 모든 데이터를 조회
+  employees;
 
 SELECT 
-    Name, Milliseconds / 60000 AS '재생 시간(분)' 
+  LastName, FirstName
+FROM
+  employees;
+
+SELECT 
+  *
+FROM
+  employees;
+
+SELECT 
+  FirstName AS '이름'
 FROM 
-    tracks
+  employees;
+
+SELECT 
+  Name,
+  Milliseconds / 60000 AS '재생 시간(분)'
+FROM 
+  tracks;
+
+
+-- 02. Sorting data
+SELECT 
+  FirstName
+FROM
+  employees
 ORDER BY
-    Milliseconds DESC;
+  FirstName;
+
+SELECT 
+  FirstName
+FROM
+  employees
+ORDER BY
+  FirstName DESC;
+
+SELECT 
+  Country, City
+FROM
+  customers
+ORDER BY
+  Country DESC,
+  City;
+
+SELECT 
+  Name,
+  Milliseconds / 60000 AS '재생 시간(분)'
+FROM 
+  tracks
+ORDER BY
+  Milliseconds DESC;
+
 
 -- NULL 정렬 예시
+SELECT 
+  ReportsTo
+FROM
+  employees
+ORDER BY
+  ReportsTo;
+
 
 -- 03. Filtering data
+SELECT
+  Country
+FROM
+  customers
+ORDER BY
+  Country;
+
+SELECT DISTINCT
+  Country
+FROM
+  customers
+ORDER BY
+  Country;
+
+SELECT 
+  LastName, FirstName, City
+FROM
+  customers
+WHERE
+  City = 'Prague';
+
+SELECT 
+  LastName, FirstName, City
+FROM
+  customers
+WHERE
+  City != 'Prague';
+
+SELECT 
+  LastName, FirstName, Company, Country
+FROM
+  customers
+WHERE
+  Company IS NULL
+  AND Country = 'USA';
+
+SELECT 
+  LastName, FirstName, Company, Country
+FROM
+  customers
+WHERE
+  Company IS NULL
+  OR Country = 'USA';
+
+SELECT 
+  Name, Bytes
+FROM
+  tracks
+WHERE
+  Bytes BETWEEN 100000 AND 500000;
+-- WHERE
+--   Bytes >= 10000
+--   AND Bytes <= 50000;
+
+SELECT 
+  Name, Bytes
+FROM
+  tracks
+WHERE
+  Bytes BETWEEN 100000 AND 500000
+ORDER BY Bytes;
+
+SELECT 
+  LastName, FirstName, Country
+FROM
+  customers
+WHERE
+  Country IN ('Canada', 'Germany', 'France');
+-- WHERE
+--   Country = 'Canada'
+--   OR Country = 'Germany'
+--   OR Country = 'France';
+
+SELECT 
+  LastName, FirstName, Country
+FROM
+  customers
+WHERE
+  Country NOT IN ('Canada', 'Germany', 'France');
+
+SELECT 
+  LastName, FirstName
+FROM
+  customers
+WHERE
+  LastName LIKE '%son';
+
+SELECT 
+  LastName, FirstName
+FROM
+  customers
+WHERE
+  FirstName LIKE '___a';
+
+
+SELECT 
+  TrackId, Name, Bytes
+FROM
+  tracks
+ORDER BY Bytes DESC
+LIMIT 7;
+
+
+SELECT 
+  TrackId, Name, Bytes
+FROM
+  tracks
+ORDER BY 
+  Bytes DESC
+LIMIT 3, 4;
+-- LIMIT 4 OFFSET 3;
+
+
 
 -- 04. Grouping data
+-- SELECT 
+--   c1, c2,..., cn, aggregate_function(ci)
+-- FROM
+--   table_name
+-- GROUP BY 
+--   c1, c2, ..., cn;
 
+SELECT
+  Country
+FROM
+  customers
+GROUP BY
+  Country;
+
+SELECT 
+  Country, COUNT(*)
+FROM
+  customers
+GROUP BY 
+  Country;
+
+SELECT
+  Composer,
+  AVG(Bytes)
+FROM
+  tracks
+GROUP BY
+  Composer
+ORDER BY
+  AVG(Bytes) DESC;
+
+SELECT
+  Composer,
+  AVG(Bytes) AS avgOfBytes
+FROM
+  tracks
+GROUP BY
+  Composer
+ORDER BY
+  avgOfBytes DESC;
+
+-- 에러
+SELECT
+  Composer,
+  AVG(Milliseconds / 60000) AS avgOfMinute
+FROM
+  tracks
+WHERE 
+  avgOfMinute < 10
+GROUP BY
+  Composer;
+
+-- 에러 해결
+SELECT
+  Composer,
+  AVG(Milliseconds / 60000) AS avgOfMinute
+FROM
+  tracks
+GROUP BY
+  Composer
+HAVING
+  avgOfMinute < 10;
