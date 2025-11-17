@@ -1,0 +1,45 @@
+<!-- select.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1 class="heading">DOM 선택</h1>
+  <a href="https://www.google.com/">google</a>
+  <p class="content">content1</p>
+  <p class="content">content2</p>
+  <p class="content">content3</p>
+  <ul>
+    <li>list1</li>
+    <li>list2</li>
+  </ul>
+  <script>
+    // document.querySelector():
+    // CSS 선택자('.heading')와 일치하는 문서 내 '첫 번째' 요소를 반환합니다.
+    // 여기서는 <h1 class="heading">...</h1> 요소를 찾아 콘솔에 출력합니다.
+    console.log(document.querySelector('.heading'));
+
+    // document.querySelector():
+    // CSS 선택자('.content')와 일치하는 '첫 번째' 요소(p.content)를 반환합니다.
+    // <p class="content">content1</p> 요소를 찾아 콘솔에 출력합니다.
+    console.log(document.querySelector('.content'));
+
+    // document.querySelectorAll():
+    // CSS 선택자('.content')와 일치하는 '모든' 요소를 NodeList(유사 배열) 형태로 반환합니다.
+    // 3개의 <p class="content">...</p> 요소가 포함된 NodeList를 콘솔에 출력합니다.
+    console.log(document.querySelectorAll('.content'));
+
+    // document.querySelectorAll():
+    // CSS 선택자('ul > li')와 일치하는 '모든' 자식 요소를 NodeList 형태로 반환합니다.
+    // <ul>의 직계 자식인 <li>list1</li>과 <li>list2</li> 요소가 포함된 NodeList를 콘솔에 출력합니다.
+    console.log(document.querySelectorAll('ul > li'));
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,60 @@
+<!-- dom-manipulation.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div>
+    <p>DOM 요소 조작</p>
+  </div>
+
+  <script>
+   // 생성
+
+    // document.createElement('h1'): 새로운 <h1> 요소를 메모리 상에 생성합니다.
+    // 아직 HTML 문서에는 추가되지 않은 상태입니다.
+    const h1Tag = document.createElement('h1');
+
+    // h1Tag.textContent = '제목': 생성된 <h1> 요소의 텍스트 콘텐츠를 '제목'으로 설정합니다.
+    h1Tag.textContent = '제목';
+
+    // console.log(h1Tag): 생성된 <h1> 요소를 콘솔에 출력합니다.
+    // 이 시점에서 콘솔에는 <h1/> 또는 <h1>제목</h1>과 같은 형태로 출력됩니다.
+    console.log(h1Tag);
+
+
+    // // 추가
+
+    // document.querySelector('div'): 문서 내의 첫 번째 <div> 요소를 선택합니다.
+    // 이 코드를 실행하려면 HTML에 <div> 태그가 있어야 합니다.
+    const divTag = document.querySelector('div');
+
+    // divTag.appendChild(h1Tag): 선택된 <div> 요소의 자식으로 'h1Tag' 요소를 추가합니다.
+    // 'h1Tag'는 이제 <div> 내부의 마지막 자식 요소가 됩니다.
+    // 이 시점에서 새로 생성된 <h1>제목</h1>이 웹 페이지에 표시됩니다.
+    divTag.appendChild(h1Tag);
+
+    // console.log(divTag): 자식으로 <h1>이 추가된 <div> 요소를 콘솔에 출력합니다.
+    console.log(divTag);
+
+
+    // // 삭제
+
+    // document.querySelector('p'): 문서 내의 첫 번째 <p> 요소를 선택합니다.
+    // 이 코드를 실행하려면 HTML에 <p> 태그가 있어야 합니다.
+    const pTag = document.querySelector('p');
+
+    // divTag.removeChild(pTag): 'divTag' 요소의 자식 중에서 'pTag' 요소를 제거합니다.
+    // 'pTag'가 'divTag'의 자식이 아니면 오류가 발생할 수 있습니다.
+    // 이 시점에서 웹 페이지에서 해당 <p> 요소가 사라집니다.
+    divTag.removeChild(pTag);
+  </script>
+</body>
+
+</html>
